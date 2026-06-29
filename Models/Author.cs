@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.SignalR;
+namespace LibraryAPI.Models;
 
 public class Author
 {
@@ -16,4 +16,6 @@ public class Author
     public DateOnly BirthDate { get; set; }
 
     public DateOnly? DeathDate { get; set; }
+
+
 }

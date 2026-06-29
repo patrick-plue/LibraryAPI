@@ -1,3 +1,5 @@
+namespace LibraryAPI.Models;
+
 public class Book
 {
     public Guid Id { get; init; } = Guid.NewGuid();
