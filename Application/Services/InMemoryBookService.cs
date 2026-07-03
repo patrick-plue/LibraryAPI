@@ -25,9 +25,7 @@ public class BookService : IBookService
             PageCount = pageCount
         };
 
-
         _books.TryAdd(newBook.Id, newBook);
-
 
         return newBook;
     }
@@ -42,9 +40,7 @@ public class BookService : IBookService
 
     public IEnumerable<Book>? ListBooks() => _books.Values;
 
-
     public Book? GetBookById(Guid id) => _books.TryGetValue(id, out var book) ? book : null;
-
 
     public Book? UpdateBook(Guid id, string? title, string? isbn, string? description, DateOnly? publishedDate, string? genre, int? pageCount)
     {
@@ -58,8 +54,4 @@ public class BookService : IBookService
         if (pageCount is not null) book.PageCount = pageCount;
         return book;
     }
-
-
-
-
 }
