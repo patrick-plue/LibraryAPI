@@ -36,7 +36,7 @@ public static class BookEndpoints
         });
 
 
-        group.MapPatch("/{id:guid}", async (Guid id, UpdateBookDto updateBookDto, IBookService bookService) =>
+        group.MapPatch("/{id:guid}", (Guid id, UpdateBookDto updateBookDto, IBookService bookService) =>
         {
             var book = bookService.UpdateBook(id, updateBookDto.Title, updateBookDto.AuthorId, updateBookDto.Isbn, updateBookDto.Description, updateBookDto.PublishedYear, updateBookDto.Genre, updateBookDto.PageCount);
 
@@ -52,7 +52,7 @@ public static class BookEndpoints
         });
 
 
-        group.MapDelete("/{id:guid}", async (Guid id, IBookService bookService) =>
+        group.MapDelete("/{id:guid}", (Guid id, IBookService bookService) =>
         {
             var deleted = bookService.RemoveBook(id);
             return deleted ? Results.NoContent() : Results.NotFound();

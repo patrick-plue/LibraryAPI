@@ -39,7 +39,7 @@ public class InMemoryAuthorService : IAuthorService
 
     }
 
-    public IEnumerable<Author>? ListAuthors() => _authors.Values;
+    public IReadOnlyCollection<Author> ListAuthors() => _authors.Values.ToList();
 
     public Author? GetAuthorById(Guid id) => _authors.TryGetValue(id, out var author) ? author : null;
 

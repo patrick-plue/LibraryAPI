@@ -8,7 +8,7 @@ public interface IAuthorService
 
     public bool RemoveAuthor(Guid id);
 
-    public IEnumerable<Author>? ListAuthors();
+    public IReadOnlyCollection<Author> ListAuthors();
 
     public Author? GetAuthorById(Guid id);
 
