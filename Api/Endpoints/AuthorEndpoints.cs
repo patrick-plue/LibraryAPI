@@ -1,5 +1,7 @@
 using LibraryAPI.Application.Interface;
 using LibraryAPI.Dtos.Authors;
+using LibraryAPI.Dtos.Books;
+using LibraryAPI.Models;
 
 public static class AuthorEndpoints
 {
@@ -14,6 +16,22 @@ public static class AuthorEndpoints
             var authorDtos = authors.Select(a => new AuthorResponseDto(a.Id, a.FirstName, a.LastName, a.Biography, a.BirthDate, a.DeathDate));
 
             return Results.Ok(authorDtos);
+        });
+
+
+        group.MapGet("/{id:guid}/book", (Guid id, IBookService bookService, IAuthorService authorService) =>
+        {
+            var author = authorService.GetAuthorById(id);
+
+            if (author == null)
+                return Results.NotFound();
+
+            var books = bookService.ListBooks();
+
+            var booksByAuthorDto = books.Where(b => b.AuthorId == id).Select(b => new BookResponseDto(b.Id, b.Title, b.AuthorId, b.Isbn, b.Description, b.PublishedYear, b.Genre, b.PageCount));
+
+            return Results.Ok(booksByAuthorDto);
+
         });
 
         group.MapPost("/", (CreateAuthorDto createAuthorDto, IAuthorService authorService, HttpContext context) =>
@@ -52,5 +70,6 @@ public static class AuthorEndpoints
             var deleted = authorService.RemoveAuthor(id);
             return deleted ? Results.NoContent() : Results.NotFound();
         });
+
     }
 }
