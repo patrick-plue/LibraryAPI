@@ -1,6 +1,7 @@
 using LibraryAPI.Application.Interface;
 using LibraryAPI.Dtos.Authors;
 using LibraryAPI.Dtos.Books;
+using LibraryAPI.Filters;
 using LibraryAPI.Models;
 
 public static class AuthorEndpoints
@@ -50,7 +51,7 @@ public static class AuthorEndpoints
             {
                 return Results.BadRequest(e.Message);
             }
-        });
+        }).WithValidation<CreateAuthorDto>();
 
 
         group.MapPatch("/{id:guid}", (Guid id, UpdateAuthorDto updateAuthorDto, IAuthorService authorService) =>

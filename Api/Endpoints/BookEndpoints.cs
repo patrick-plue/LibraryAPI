@@ -1,5 +1,6 @@
 using LibraryAPI.Application.Interface;
 using LibraryAPI.Dtos.Books;
+using LibraryAPI.Filters;
 
 public static class BookEndpoints
 {
@@ -33,7 +34,7 @@ public static class BookEndpoints
             {
                 return Results.BadRequest(e.Message);
             }
-        });
+        }).WithValidation<CreateBookDto>();
 
 
         group.MapPatch("/{id:guid}", (Guid id, UpdateBookDto updateBookDto, IBookService bookService) =>
