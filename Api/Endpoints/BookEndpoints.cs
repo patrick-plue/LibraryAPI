@@ -1,6 +1,6 @@
 using LibraryAPI.Application.Interface;
 using LibraryAPI.Dtos.Books;
-using LibraryAPI.Filters;
+using LibraryAPI.Api.Filters;
 
 public static class BookEndpoints
 {

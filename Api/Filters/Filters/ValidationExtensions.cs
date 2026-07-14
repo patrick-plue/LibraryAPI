@@ -1,4 +1,4 @@
-namespace LibraryAPI.Filters;
+namespace LibraryAPI.Api.Filters;
 
 public static class ValidationExtensions
 {

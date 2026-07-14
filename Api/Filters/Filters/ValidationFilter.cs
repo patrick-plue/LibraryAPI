@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace LibraryAPI.Filters;
+namespace LibraryAPI.Api.Filters;
 
 public sealed class ValidationFilter<T> : IEndpointFilter where T : class
 {

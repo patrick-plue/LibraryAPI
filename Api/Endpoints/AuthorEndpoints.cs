@@ -1,7 +1,7 @@
 using LibraryAPI.Application.Interface;
 using LibraryAPI.Dtos.Authors;
 using LibraryAPI.Dtos.Books;
-using LibraryAPI.Filters;
+using LibraryAPI.Api.Filters;
 using LibraryAPI.Models;
 
 public static class AuthorEndpoints
